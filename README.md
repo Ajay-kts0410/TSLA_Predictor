@@ -1,7 +1,4 @@
 # TSLA_Predictor
-This is an excellent idea for your GitHub repository's `README.md`! A well-structured summary will clearly showcase your technical depth and the project's scope.
-
-Here is a comprehensive project summary, ready for your GitHub repository, that incorporates **LSTM**, **FinBERT**, and your **full-stack deployment** using the files you provided.
 
 ## 🚀 TSLA Stock Forecast: FinBERT-Enhanced Deep Learning Model
 
@@ -46,8 +43,6 @@ The project is logically organized into modules for data handling, model develop
 ---
 
 ### ➡️ How to Run the Project
-
-*(This section is crucial for GitHub. You would fill in the commands here.)*
 
 1.  **Clone the repository:** `git clone [Your Repo URL]`
 2.  **Install dependencies:** `pip install -r requirements.txt` (assuming you create this file)
