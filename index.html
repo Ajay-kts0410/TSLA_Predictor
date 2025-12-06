@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSLA Stock Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        #prediction-box {
+            margin-top: 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        #message {
+            margin-top: 10px;
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TSLA Next Day Price Predictor</h1>
+    <p>Click the button below to get the predicted closing price for the next trading day.</p>
+    <button id="predict-btn">Get Prediction</button>
+    <div id="prediction-box">
+        <p>Awaiting prediction...</p>
+    </div>
+    <div id="message"></div>
+    <div id="prediction-date"></div>
+</div>
+
+<script>
+    document.getElementById('predict-btn').addEventListener('click', () => {
+        const predictionBox = document.getElementById('prediction-box');
+        const messageBox = document.getElementById('message');
+        const dateBox = document.getElementById('prediction-date');
+        
+        predictionBox.innerHTML = '<p>Predicting...</p>';
+        messageBox.innerHTML = 'This may take a moment.';
+        dateBox.innerHTML = '';
+
+        fetch('/predict')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    predictionBox.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                    messageBox.innerHTML = '';
+                    dateBox.innerHTML = '';
+                } else {
+                    predictionBox.innerHTML = `Predicted Price: ${data.prediction}`;
+                    messageBox.innerHTML = data.message;
+                    dateBox.innerHTML = `Prediction Date: ${data.date}`;
+                }
+            })
+            .catch(error => {
+                predictionBox.innerHTML = `<p style="color: red;">Failed to fetch prediction.</p>`;
+                messageBox.innerHTML = 'Check your API key and server log.';
+                dateBox.innerHTML = '';
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+</body>
+</html>
