@@ -16,7 +16,7 @@ This project is an **end-to-end stock price prediction system** for **Tesla ($TS
 ---
 
 ### Project live website
-
+<img width="1892" height="877" alt="Image" src="https://github.com/user-attachments/assets/8e1b4f72-a7f4-45ca-afe9-a1645c579ba8" />
 
 ### 🛠️ Technology Stack
 
